@@ -1,9 +1,14 @@
-# https://docs.getdbt.com/docs/core/connect-data-platform/profiles.yml
-
-base:
-  outputs:
-
-    dev:
-      type: duckdb
-
+dbt_ops:
   target: dev
+  outputs:
+    dev:
+      type: bigquery
+      method: service-account
+      project: dtc-de-zoomcamp-2024               
+      dataset: nyc_bikes
+      job_execution_timeout_seconds: 300
+      job_retries: 1
+      keyfile: /home/src/.dbt/dtc-de-zoomcamp-2024-4a477d7bc858.json
+      location: US
+      priority: interactive
+      threads: 4
