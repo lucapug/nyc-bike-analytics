@@ -12,7 +12,7 @@ project_id = 'dtc-de-zoomcamp-2024'
 
 @data_exporter
 def export_data(data, *args, **kwargs):
-    data['starttime_date'] = data['starttime'].dt.date
+    data['month'] = data['starttime'].dt.month
 
     table_name = str(kwargs['year'])+'_bike_data'
 
@@ -25,6 +25,6 @@ def export_data(data, *args, **kwargs):
     pq.write_to_dataset(
         table,
         root_path=root_path,
-        partition_cols=['starttime_date'],
+        partition_cols=['month'],
         filesystem=gcs
     )
