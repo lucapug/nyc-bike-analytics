@@ -14,7 +14,7 @@ def load_data_from_api(*args, **kwargs):
     """
     prefix = 'https://s3.amazonaws.com/tripdata/JC-'
 
-    year = '2019'
+    year = kwargs['year']
     months=[]
     for i in range(12):
         month = '0'+str(i+1)
@@ -46,7 +46,7 @@ def load_data_from_api(*args, **kwargs):
 
     df_list = []
     for month in months:
-        url = prefix+year+month+suffix
+        url = prefix+str(year)+month+suffix
         df = pd.read_csv(url, sep=',', compression='zip', dtype=bike_dtypes, parse_dates=parse_dates)
         df_list.append(df)
     

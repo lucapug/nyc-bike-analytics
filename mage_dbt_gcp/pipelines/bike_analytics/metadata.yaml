@@ -2,7 +2,8 @@ blocks:
 - all_upstream_blocks_executed: true
   color: null
   configuration: {}
-  downstream_blocks: []
+  downstream_blocks:
+  - local_to_gcs
   executor_config: null
   executor_type: local_python
   has_callback: false
@@ -14,6 +15,22 @@ blocks:
   type: data_loader
   upstream_blocks: []
   uuid: api_to_local
+- all_upstream_blocks_executed: false
+  color: null
+  configuration: {}
+  downstream_blocks: []
+  executor_config: null
+  executor_type: local_python
+  has_callback: false
+  language: python
+  name: local_to_gcs
+  retry_config: null
+  status: executed
+  timeout: null
+  type: data_exporter
+  upstream_blocks:
+  - api_to_local
+  uuid: local_to_gcs
 cache_block_output_in_memory: false
 callbacks: []
 concurrency_config: {}
@@ -36,5 +53,7 @@ spark_config: {}
 tags: []
 type: python
 uuid: bike_analytics
+variables:
+  year: 2019
 variables_dir: /home/src/mage_data/mage_dbt_gcp
 widgets: []
