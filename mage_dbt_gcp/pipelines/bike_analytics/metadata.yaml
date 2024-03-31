@@ -3,19 +3,19 @@ blocks:
   color: null
   configuration: {}
   downstream_blocks:
-  - normalize_fields
+  - format_cols_names
   executor_config: null
   executor_type: local_python
   has_callback: false
   language: python
   name: api_to_local
   retry_config: null
-  status: executed
+  status: failed
   timeout: null
   type: data_loader
   upstream_blocks: []
   uuid: api_to_local
-- all_upstream_blocks_executed: true
+- all_upstream_blocks_executed: false
   color: null
   configuration: {}
   downstream_blocks:
@@ -24,15 +24,15 @@ blocks:
   executor_type: local_python
   has_callback: false
   language: python
-  name: normalize_fields
+  name: format_cols_names
   retry_config: null
   status: executed
   timeout: null
   type: transformer
   upstream_blocks:
   - api_to_local
-  uuid: normalize_fields
-- all_upstream_blocks_executed: true
+  uuid: format_cols_names
+- all_upstream_blocks_executed: false
   color: null
   configuration: {}
   downstream_blocks:
@@ -47,9 +47,9 @@ blocks:
   timeout: null
   type: data_exporter
   upstream_blocks:
-  - normalize_fields
+  - format_cols_names
   uuid: local_to_gcs
-- all_upstream_blocks_executed: true
+- all_upstream_blocks_executed: false
   color: null
   configuration:
     data_provider: bigquery
@@ -95,6 +95,6 @@ tags: []
 type: python
 uuid: bike_analytics
 variables:
-  year: 2019
+  year: 2020
 variables_dir: /home/src/mage_data/mage_dbt_gcp
 widgets: []
