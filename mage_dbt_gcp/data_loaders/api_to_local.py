@@ -1,6 +1,10 @@
 import io
 import pandas as pd
 import requests
+
+from zipfile import ZipFile
+from urllib.request import urlopen
+
 if 'data_loader' not in globals():
     from mage_ai.data_preparation.decorators import data_loader
 if 'test' not in globals():
@@ -13,6 +17,7 @@ def load_data_from_api(*args, **kwargs):
     Template for loading data from API
     """
     prefix = 'https://s3.amazonaws.com/tripdata/JC-'
+    prefix_file = 'JC-'
 
     year = kwargs['year']
     months=[]
@@ -22,6 +27,7 @@ def load_data_from_api(*args, **kwargs):
         months.append(month) 
 
     suffix = '-citibike-tripdata.csv.zip'
+    suffix_csv = '-citibike-tripdata.csv'
 
     
     bike_dtypes = {
@@ -47,7 +53,11 @@ def load_data_from_api(*args, **kwargs):
     df_list = []
     for month in months:
         url = prefix+str(year)+month+suffix
-        df = pd.read_csv(url, sep=',', compression='zip', dtype=bike_dtypes, parse_dates=parse_dates)
+
+        r = urlopen(url).read()
+        df_zip = ZipFile(io.BytesIO(r))
+
+        df = pd.read_csv(df_zip.open(prefix_file+str(year)+month+suffix_csv), sep=',' , dtype=bike_dtypes, parse_dates=parse_dates)
         df_list.append(df)
     
     return pd.concat(df_list, ignore_index=True)
