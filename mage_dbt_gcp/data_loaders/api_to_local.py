@@ -29,7 +29,9 @@ def load_data_from_api(*args, **kwargs):
         months.append(month) 
 
     suffix = '-citibike-tripdata.csv.zip'
+    suffix2 = '-citbike-tripdata.csv.zip'
     suffix_csv = '-citibike-tripdata.csv'
+    suffix_csv2 = '-citbike-tripdata.csv'
 
     date_schema_change = datetime.date(2021,1,31)
 
@@ -76,12 +78,31 @@ def load_data_from_api(*args, **kwargs):
 
 
         url = prefix+str(year)+month+suffix
+        url2 = prefix+str(year)+month+suffix2
+        #print(url)
 
-        r = urlopen(url).read()
-        df_zip = ZipFile(io.BytesIO(r))
+        req = requests.get(url)
 
-        df = pd.read_csv(df_zip.open(prefix_file+str(year)+month+suffix_csv), sep=',' , dtype=bike_dtypes, parse_dates=parse_dates)
-        
+        if req.status_code == 200:
+            r = urlopen(url).read()
+            df_zip = ZipFile(io.BytesIO(r))
+        else:
+            r = urlopen(url2).read()
+            df_zip = ZipFile(io.BytesIO(r))            
+
+        #r = urlopen(url).read()
+        #df_zip = ZipFile(io.BytesIO(r))
+
+        file_list = df_zip.namelist()
+        #print(file_list)
+
+        file_to_read = prefix_file+str(year)+month+suffix_csv
+
+        if file_to_read in file_list:
+            df = pd.read_csv(df_zip.open(prefix_file+str(year)+month+suffix_csv), sep=',' , dtype=bike_dtypes, parse_dates=parse_dates)
+        else:
+            df = pd.read_csv(df_zip.open(prefix_file+str(year)+month+suffix_csv2), sep=',' , dtype=bike_dtypes, parse_dates=parse_dates)
+
         if before:
             df.drop(columns=['tripduration','birth year','gender','bikeid'], inplace=True)
             df.columns = df.columns.str.replace(' ', '_').str.lower()

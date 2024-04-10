@@ -93,6 +93,6 @@ tags: []
 type: python
 uuid: bike_analytics
 variables:
-  year: 2020
+  year: 2023
 variables_dir: /home/src/mage_data/mage_dbt_gcp
 widgets: []

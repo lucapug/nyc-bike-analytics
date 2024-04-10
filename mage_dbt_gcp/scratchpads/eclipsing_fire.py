@@ -11,8 +11,8 @@ df = get_variable('bike_analytics', 'api_to_local', 'output_0')
 
 #print(df.at[0, 'start_lat'])
 
-df.rideable_type.unique()
+#df.rideable_type.unique()
 
 #df.start_station_id.unique()
 
-#df.tail(100)
+df.tail(100)
