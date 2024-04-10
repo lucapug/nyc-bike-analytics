@@ -3,7 +3,7 @@ blocks:
   color: null
   configuration: {}
   downstream_blocks:
-  - format_cols_names
+  - local_to_gcs
   executor_config: null
   executor_type: local_python
   has_callback: false
@@ -18,20 +18,18 @@ blocks:
 - all_upstream_blocks_executed: true
   color: null
   configuration: {}
-  downstream_blocks:
-  - local_to_gcs
+  downstream_blocks: []
   executor_config: null
   executor_type: local_python
   has_callback: false
   language: python
-  name: format_cols_names
+  name: eclipsing fire
   retry_config: null
-  status: executed
+  status: updated
   timeout: null
-  type: transformer
-  upstream_blocks:
-  - api_to_local
-  uuid: format_cols_names
+  type: scratchpad
+  upstream_blocks: []
+  uuid: eclipsing_fire
 - all_upstream_blocks_executed: true
   color: null
   configuration: {}
@@ -47,7 +45,7 @@ blocks:
   timeout: null
   type: data_exporter
   upstream_blocks:
-  - format_cols_names
+  - api_to_local
   uuid: local_to_gcs
 - all_upstream_blocks_executed: true
   color: null
@@ -95,6 +93,6 @@ tags: []
 type: python
 uuid: bike_analytics
 variables:
-  year: 2019
+  year: 2020
 variables_dir: /home/src/mage_data/mage_dbt_gcp
 widgets: []
