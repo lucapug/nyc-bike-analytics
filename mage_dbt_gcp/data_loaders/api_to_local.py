@@ -114,10 +114,13 @@ def load_data_from_api(*args, **kwargs):
             "end_station_longitude":"end_lng"}, inplace=True)
             df.replace(to_replace='Customer', value='casual', inplace=True)
             df.replace(to_replace='Subscriber', value='member', inplace=True)
-            df.insert(0,'rideable_type', '')
-            df.insert(0,'ride_id', '')
+            df.insert(0,'rideable_type', 'Unknown')
+            df.insert(0,'ride_id', 'Undefined')
         else:
             df.replace(to_replace='docked_bike', value='classic_bike', inplace=True)
+        
+        #df['date']=df['started_at'].dt.date
+        
         df_list.append(df)
     
     return pd.concat(df_list, ignore_index=True)

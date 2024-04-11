@@ -15,4 +15,5 @@ df = get_variable('bike_analytics', 'api_to_local', 'output_0')
 
 #df.start_station_id.unique()
 
-df.tail(100)
+#df.tail(100)
+print(df.info())

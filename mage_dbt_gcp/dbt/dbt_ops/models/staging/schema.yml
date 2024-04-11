@@ -1,0 +1,12 @@
+version: 2
+
+sources:
+  - name: external_bigquery_source  # A logical name for your source
+    database: dtc-de-zoomcamp-2024  # Your BigQuery Project ID
+    schema: nyc_bikes  # Your BigQuery Dataset name
+    tables:
+      - name: external_2019_tripdata  # Your BigQuery Table name
+      - name: external_2020_tripdata  # Your BigQuery Table name
+      - name: external_2021_tripdata  # Your BigQuery Table name
+      - name: external_2022_tripdata  # Your BigQuery Table name
+      - name: external_2023_tripdata  # Your BigQuery Table name

@@ -10,7 +10,7 @@ blocks:
   language: python
   name: api_to_local
   retry_config: null
-  status: executed
+  status: updated
   timeout: null
   type: data_loader
   upstream_blocks: []
@@ -30,7 +30,7 @@ blocks:
   type: scratchpad
   upstream_blocks: []
   uuid: eclipsing_fire
-- all_upstream_blocks_executed: true
+- all_upstream_blocks_executed: false
   color: null
   configuration: {}
   downstream_blocks:
@@ -47,7 +47,7 @@ blocks:
   upstream_blocks:
   - api_to_local
   uuid: local_to_gcs
-- all_upstream_blocks_executed: true
+- all_upstream_blocks_executed: false
   color: null
   configuration:
     data_provider: bigquery
@@ -57,7 +57,8 @@ blocks:
     export_write_policy: append
     limit: 1000
     use_raw_sql: true
-  downstream_blocks: []
+  downstream_blocks:
+  - dbt/dbt_ops/models/staging/stg_JC_citibike_trips
   executor_config: null
   executor_type: local_python
   has_callback: false
@@ -70,6 +71,28 @@ blocks:
   upstream_blocks:
   - local_to_gcs
   uuid: gcs_to_bq
+- all_upstream_blocks_executed: false
+  color: null
+  configuration:
+    dbt_project_name: dbt/dbt_ops
+    file_path: dbt/dbt_ops/models/staging/stg_JC_citibike_trips.sql
+    file_source:
+      path: dbt/dbt_ops/models/staging/stg_JC_citibike_trips.sql
+      project_path: dbt/dbt_ops
+    limit: 1000
+  downstream_blocks: []
+  executor_config: null
+  executor_type: local_python
+  has_callback: false
+  language: sql
+  name: dbt/dbt_ops/models/staging/stg_JC_citibike_trips
+  retry_config: null
+  status: executed
+  timeout: null
+  type: dbt
+  upstream_blocks:
+  - gcs_to_bq
+  uuid: dbt/dbt_ops/models/staging/stg_JC_citibike_trips
 cache_block_output_in_memory: false
 callbacks: []
 concurrency_config: {}
@@ -93,6 +116,6 @@ tags: []
 type: python
 uuid: bike_analytics
 variables:
-  year: 2023
+  year: 2019
 variables_dir: /home/src/mage_data/mage_dbt_gcp
 widgets: []

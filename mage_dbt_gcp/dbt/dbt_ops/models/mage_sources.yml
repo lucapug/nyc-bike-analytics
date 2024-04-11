@@ -1,0 +1,13 @@
+sources:
+- description: Dataframes Mage upstream blocks
+  loader: mage
+  name: mage_dbt_ops
+  schema: nyc_bikes
+  tables:
+  - description: Dataframe for block `gcs_to_bq` of the `bike_analytics` mage pipeline.
+    identifier: mage_bike_analytics_gcs_to_bq
+    meta:
+      block_uuid: gcs_to_bq
+      pipeline_uuid: bike_analytics
+    name: bike_analytics_gcs_to_bq
+version: 2
