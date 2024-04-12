@@ -87,7 +87,7 @@ blocks:
   language: sql
   name: dbt/dbt_ops/models/staging/stg_JC_citibike_trips
   retry_config: null
-  status: updated
+  status: executed
   timeout: null
   type: dbt
   upstream_blocks:
