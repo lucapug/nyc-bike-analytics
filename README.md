@@ -13,7 +13,7 @@ capstone project for [Data Talks Club Data-Engineering-zoomcamp 2024](https://gi
 
     ![](assets/20240412_221833_my_excalidraw_sketch_fig_1.excalidraw_dark.png)
 - **Technologies involved**
-  - Mage AI as pipeline orchestrator, Google Cloud Platform (Google Cloud Storage, Google BigQuery, Looker Studio), Data Build Tool (DBT)
+  - Mage AI, Google Cloud Platform (Google Cloud Storage, Google BigQuery, Looker Studio), Data Build Tool (DBT)
 
     - In particular, Mage AI is an orchestration tool that eases the construction of the pipeline and the management of the automation. Here below the blocks defining the DAG of the data pipeline, built inside Mage AI
 
