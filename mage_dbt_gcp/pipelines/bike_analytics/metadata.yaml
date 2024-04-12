@@ -80,7 +80,8 @@ blocks:
       path: dbt/dbt_ops/models/staging/stg_JC_citibike_trips.sql
       project_path: dbt/dbt_ops
     limit: 1000
-  downstream_blocks: []
+  downstream_blocks:
+  - dbt/dbt_ops/models/core/facts_JC_citibike_trips
   executor_config: null
   executor_type: local_python
   has_callback: false
@@ -93,6 +94,28 @@ blocks:
   upstream_blocks:
   - gcs_to_bq
   uuid: dbt/dbt_ops/models/staging/stg_JC_citibike_trips
+- all_upstream_blocks_executed: false
+  color: null
+  configuration:
+    dbt_project_name: dbt/dbt_ops
+    file_path: dbt/dbt_ops/models/core/facts_JC_citibike_trips.sql
+    file_source:
+      path: dbt/dbt_ops/models/core/facts_JC_citibike_trips.sql
+      project_path: dbt/dbt_ops
+    limit: 1000
+  downstream_blocks: []
+  executor_config: null
+  executor_type: local_python
+  has_callback: false
+  language: sql
+  name: dbt/dbt_ops/models/core/facts_JC_citibike_trips
+  retry_config: null
+  status: updated
+  timeout: null
+  type: dbt
+  upstream_blocks:
+  - dbt/dbt_ops/models/staging/stg_JC_citibike_trips
+  uuid: dbt/dbt_ops/models/core/facts_JC_citibike_trips
 cache_block_output_in_memory: false
 callbacks: []
 concurrency_config: {}
