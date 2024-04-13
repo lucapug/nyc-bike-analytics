@@ -8,6 +8,7 @@ capstone project for [Data Talks Club Data-Engineering-zoomcamp 2024](https://gi
   - The goal is to make an analysis of the bike-sharing system in the city of Jersey City in the United States. The goal is to extract insights from a publicly available historical dataset.
 - **The dataset**
   - The dataset is composed of compressed csv files (one for each month of the year) of bike rides archived from 2019 to 2023. Each file is a table, whose rows are single rides described by features like start and end time, start and end station, type of user, type of bike,..
+    - main characteristics: 3.500.000 rows, 13 columns, data schema change from febraury 2021 onward
 - **The project architecture**
   - In order to better organize the workflow a data pipeline is defined, that is depicted in the following figure (more details on the blocks in the following sections)
 
