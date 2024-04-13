@@ -68,6 +68,6 @@ To build a final report of the insights, a Looker studio Dashboard has been crea
 
 ![](assets/20240413_212052_Report_JC_bikes_v1_1.png)
 
-The report is available [here](https://lookerstudio.google.com/s/sPLZ4E-dYaAhttps:/)
+The report is available [here](https://lookerstudio.google.com/reporting/f5c76d75-2615-41a9-a6bb-cd2b80918131)
 
 Reproducibility
