@@ -59,7 +59,6 @@ Transformations
 
 Transformations over the data warehouse staging table has been done by means of DBT core , available as an integration in Mage AI. The final result is the facts_JC_citibike materialized view to which Looker studio is connected to make the data analysis. See here below the lineage graph from dbt documentation.
 
-
 ![](assets/20240413_211557_dbt_lineage_graph.png)
 
 Dashboard
@@ -68,6 +67,6 @@ To build a final report of the insights, a Looker studio Dashboard has been crea
 
 ![](assets/20240413_212052_Report_JC_bikes_v1_1.png)
 
-The report is available [here](https://lookerstudio.google.com/reporting/f5c76d75-2615-41a9-a6bb-cd2b80918131)
+The interactive report is available [here](https://lookerstudio.google.com/reporting/f5c76d75-2615-41a9-a6bb-cd2b80918131)
 
 Reproducibility
