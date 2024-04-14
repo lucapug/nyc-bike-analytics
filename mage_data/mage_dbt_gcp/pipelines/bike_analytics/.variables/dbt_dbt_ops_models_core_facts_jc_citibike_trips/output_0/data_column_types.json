@@ -1,0 +1,1 @@
+{"rideable_type": "str", "started_at": "datetime64[ns, UTC]", "ended_at": "datetime64[ns, UTC]", "duration_in_mins": "int64", "start_station_name": "str", "start_lat": "Decimal", "start_lng": "Decimal", "end_station_name": "str", "member_casual": "str"}

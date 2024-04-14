@@ -1,0 +1,1 @@
+{"ride_id": "str", "rideable_type": "str", "started_at": "datetime64[ns, UTC]", "ended_at": "datetime64[ns, UTC]", "start_station_name": "str", "start_station_id": "str", "end_station_name": "str", "end_station_id": "str", "start_lat": "Decimal", "start_lng": "Decimal", "end_lat": "Decimal", "end_lng": "Decimal", "member_casual": "str"}
