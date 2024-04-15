@@ -86,4 +86,4 @@ The interactive version of this report is available [here](https://lookerstudio.
 
 Reproducibility
 
-The details to reproduce the project are described [here](docs/project_setup.mdhttps:/)
+The details to reproduce the project are described [here](docs/project_setup.md)
