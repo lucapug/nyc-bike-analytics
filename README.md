@@ -80,9 +80,9 @@ To build a final report of the insights, a Looker studio Dashboard has been crea
 
 ![](assets/20240415_110626_Report_JC_bikes_v2_1.png)
 
-Insights from the graphs above, combined with news on the bike-share service:
+Insights from the graphs above:
 
-Regarding the rides count by bike type, all the unknowns counts are distributed temporally in a consistent way with the schema change reported before. In fact before febrauary 2021, the two types (classic and e-bike) were counted together (and the e-bikes were a few percentage of the total). The seasonal effect is evident in the timeline with peaks of utilization in Summer every year.
+Regarding the rides count by bike type, all the unknowns counts are distributed temporally in a consistent way with the schema change reported before. Before febrauary 2021, the two types (classic and e-bike) were counted together and probably e-bikes were an irrevelant number. The registration of e-bikes starts from 1st of Juin 2021, that is also the date from which the two bike-share systems of Jersey City and Hoboken were unified under the control of Citibike. Notice the seasonal effect in the timeline with peaks of utilization in Summer every year, as expected for this type of transportation. As for the hetmap interpretation, two blobs are recognizable corresponding to Hoboken and Jersey City respectively. The hottest points (most popular starting stations in terms of rides count) are in Jersey City Downtown at the Grove St PATH station (that is next to a PATH Station), Hamilton Park (a leisure place) and Hoboken PATH station.
 
 The interactive version of this report is available [here](https://lookerstudio.google.com/reporting/f5c76d75-2615-41a9-a6bb-cd2b80918131)
 
