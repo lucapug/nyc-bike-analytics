@@ -39,7 +39,7 @@ This is my capstone project for [Data Talks Club Data-Engineering-zoomcamp 2024]
 - **The project architecture**
   - In order to better organize the workflow a data pipeline has been defined, that is depicted in the following figure (more details on the blocks in the following sections)
 
-    ![](assets/20240412_221833_my_excalidraw_sketch_fig_1.excalidraw_dark.png)
+    ![](assets/20240415_101002_my_excalidraw_sketch_fig_1_v2.excalidraw_dark.png)
 - **Technologies involved**
   - Mage AI, Google Cloud Platform (Google Cloud Storage, Google BigQuery, Looker Studio), Data Build Tool (DBT)
 
@@ -76,7 +76,7 @@ To build a final report of the insights, a Looker studio Dashboard has been crea
 
 ![](assets/20240413_212052_Report_JC_bikes_v1_1.png)
 
-Some insights from the graphs above: 
+Some insights from the graphs above:
 
 The interactive version of this report is available [here](https://lookerstudio.google.com/reporting/f5c76d75-2615-41a9-a6bb-cd2b80918131)
 
