@@ -5,15 +5,15 @@ This is my capstone project for [Data Talks Club Data-Engineering-zoomcamp 2024]
 ### Problem description
 
 - **The objective**
-  - The goal is to make an analysis of the bike-sharing system in the city of Jersey City in the United States. The goal is to extract insights from a publicly available historical dataset.
+  - The goal is to make an analysis of the bike-sharing system in the city of Jersey City in the United States, extracting insights from a [publicly available historical dataset](https://s3.amazonaws.com/tripdata/index.html). The bike-share service is [operated by Citibike](https://citibikenyc.com/nj).
 - **The dataset**
   - The dataset is composed of compressed csv files (one for each month of the year) of bike rides archived from 2019 to 2023. Each file is a table, whose rows are single rides described by features like start and end time, start and end station, type of user, type of bike,..
 
     main characteristics of the whole dataset (5 years span):
 
-    approximately 3.500.000 rows, 13 columns
+    approximately 3.300.000 rows, 13 columns
 
-    a relevant data schema change from febraury 2021 onward (comparison here below, on the left the schema before february 2021)
+    there has been a relevant data schema change from febraury 2021 onward (comparison here below, on the left the schema before february 2021)
 
 
     | starttime               | started_at         |
@@ -59,13 +59,13 @@ Being an analysis of historical data, the processing of the data is of *batch ty
 
 Data warehouse
 
-BigQuery serves as the data warehouse for the project. A dataset is created, where data from the data lake is read by means of external tables. Then the external tables (one for each year of the analysis) are unioned in an optimized way in a materialized view (stg_JC_citibike_trips). The optimization is realized by partitioning the data over start_at (a timestamp column containing the start time of each ride) with granularity of day. Then a clusterization has been done over start_station_name (a column of categorical type, with high cardinality). Both the partition and the clusterization choices have been done in consideration of the type of transformations that will follow.
+BigQuery is the data warehouse for the project. A BQ dataset is created, where data from the data lake is read by means of external tables. Then the external tables (one for each year of the analysis) are unioned in an optimized way in a materialized view (stg_JC_citibike_trips). The optimization is realized by partitioning the data over start_at (a timestamp column containing the start time of each ride) with granularity of day. Then a clusterization has been done over start_station_name (a column of categorical type, with high cardinality). Both the partition and the clusterization choices have been done in consideration of the type of transformations that will follow.
 
 Transformations
 
 Transformations over the data warehouse staging table has been done by means of DBT core, available as an integration in Mage AI. The final result is the facts_JC_citibike materialized view to which Looker studio is successively connected to make the data analysis.
 
-See here below the lineage graph from the dbt documentation of the project. Notice that the dbt source mage_dbt_ops_bike_analytics_gcs_to_bq is an external source, created with a SQL transformer block of Mage. Here 'external source' means that the SQL transformation operates on input data that are outside the data warehouse. The output of this block are the BigQuery external tables over which the DBT transformation blocks operate.
+See here below the lineage graph from the dbt documentation of the project (sources and models distinguished by different colors). Notice that the dbt source mage_dbt_ops_bike_analytics_gcs_to_bq is an external source, created with a SQL transformer block of Mage. Here 'external source' means that the SQL transformation operates on input data that are outside the data warehouse. The output of this block are the BigQuery external tables over which the DBT transformation blocks operate.
 
 ![](assets/20240413_211557_dbt_lineage_graph.png)
 
@@ -73,14 +73,16 @@ Dashboard
 
 To build a final report of the insights, a Looker studio Dashboard has been created, connected to the facts_JC_citibike table and containing 4 tiles:
 
-* rides count by bike type: a temporal distribution over the 5-years period
-* rides count by start station position: a spatial distibution (heatmap) over the geographic locations of all the start stations in Jersey City
-* type of bike distribution: a pie chart showing the percentage of bike types
-* type of customer distribution: a pie chart showing the percentage of customer types (member/casual)
+* *rides count by bike type*: a temporal distribution over the 5-years period
+* *rides count by start station position*: a spatial distibution (heatmap) over the geographic locations of all the start stations in Jersey City
+* *type of bike distribution*: a pie chart showing the percentage of bike types
+* *type of customer distribution*: a pie chart showing the percentage of customer types (member/casual)
 
 ![](assets/20240415_110626_Report_JC_bikes_v2_1.png)
 
-Some insights from the graphs above:
+Insights from the graphs above, combined with news on the bike-share service:
+
+Regarding the rides count by bike type, all the unknowns counts are distributed temporally in a consistent way with the schema change reported before. In fact before febrauary 2021, the two types (classic and e-bike) were counted together (and the e-bikes were a few percentage of the total). The seasonal effect is evident in the timeline with peaks of utilization in Summer every year.
 
 The interactive version of this report is available [here](https://lookerstudio.google.com/reporting/f5c76d75-2615-41a9-a6bb-cd2b80918131)
 
