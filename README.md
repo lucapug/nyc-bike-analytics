@@ -5,7 +5,7 @@ This is my capstone project for [Data Talks Club Data-Engineering-zoomcamp 2024]
 ### Problem description
 
 - **The objective**
-  - The goal is to make an analysis of the bike-sharing system in the city of Jersey City in the United States, extracting insights from a [publicly available historical dataset](https://s3.amazonaws.com/tripdata/index.html). The bike-share service is [operated by Citibike](https://citibikenyc.com/nj).
+  - The goal is to make an analysis of the bike-sharing system in the city of Jersey City in the United States, extracting insights from a [publicly available historical dataset](https://s3.amazonaws.com/tripdata/index.html). The bike-share service is [operated by Citibike](https://citibikenyc.com/nj), the same operator of the nearby located NYC bike-share system.
 - **The dataset**
   - The dataset is composed of compressed csv files (one for each month of the year) of bike rides archived from 2019 to 2023. Each file is a table, whose rows are single rides described by features like start and end time, start and end station, type of user, type of bike,..
 
