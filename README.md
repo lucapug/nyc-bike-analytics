@@ -7,13 +7,13 @@ This is my capstone project for [Data Talks Club Data-Engineering-zoomcamp 2024]
 - **The objective**
   - The goal is to make an analysis of the bike-sharing system in the city of Jersey City in the United States, extracting insights from a [publicly available historical dataset](https://s3.amazonaws.com/tripdata/index.html). The bike-share service is [operated by Citibike](https://citibikenyc.com/nj), the same operator of the nearby located NYC bike-share system.
 - **The dataset**
-  - The dataset is composed of compressed csv files (one for each month of the year) of bike rides archived from 2019 to 2023. Each file is a table, whose rows are single rides described by features like start and end time, start and end station, type of user, type of bike,..
+  - The dataset is composed of compressed csv files (one for each month of the year) of bike rides. In this project we consider the rides archived from 2019 to 2023. Each file is a table, whose rows are single rides described by features like start and end time, start and end station, type of user, type of bike,..
 
     main characteristics of the whole dataset (5 years span):
 
     approximately 3.300.000 rows, 13 columns
 
-    there has been a relevant data schema change from febraury 2021 onward (comparison here below, on the left the schema before february 2021)
+    there has been a relevant data schema change from febraury 2021 onward. As a consequence, part of the data processing has been devoted to harmonize the source tables. Here below is a comparison of the columns before and after the schema change; on the left is  the schema before february 2021;
 
 
     | starttime               | started_at         |
