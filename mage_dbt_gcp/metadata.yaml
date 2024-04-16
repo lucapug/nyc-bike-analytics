@@ -56,4 +56,4 @@ help_improve_mage: true
 features:
   dbt_v2: true
 pipelines:
-openai_api_key: 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
+openai_api_key: ''
