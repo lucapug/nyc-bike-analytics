@@ -42,11 +42,11 @@ You are now ready to create the cloud resources for the project:
 
 `terraform apply`
 
-With the gcs bucket and the bq dataset created, it is now time to install Mage AI on your machine and launch the application to execute the blocks of the data pipeline; let's do the installation in a dockerized way, the only way in which you can have DBT integrated in the Mage project at the moment, by easily adding DBT blocks to the pipeline when necessary.
+With the gcs bucket and the bq dataset created, it is now time to install Mage AI on your machine and launch the application to execute the blocks of the data pipeline; let's do the installation in a dockerized way, the only way in which you can have DBT integrated in the Mage project at the moment, thus easily adding DBT blocks to the pipeline when necessary.
 
 `docker run -it -p 6789:6789 -p 8080:8080 -v $(pwd):/home/src mageai/mageai /app/run_app.sh mage start mage_dbt_gcp`
 
-the two forwarded ports are respectively for accessing in the web browser to the Mage UI (localhost:6789) and to the static web site containing the dbt project documentation (and in particular the lineage graph) (localhost:8080) while the Mage UI is up and running. We will see at the end of this document how to serve the dbt documentation in a static web site.
+the two forwarded ports (6789 and 8080) are respectively for accessing in the web browser to the Mage UI and to the static web site containing the dbt project documentation, while the Mage UI is up and running. We will see at the end of this document how to serve the dbt documentation in a static web site from inside Mage AI.
 
 From now on, the rest of the project can be run from inside the Mage UI, where there is also a terminal (that is executed inside the running container)
 
@@ -70,7 +70,11 @@ When you are done with the experimentation of the project, you can stop the dock
 
 (you can find the container name with: `docker ps -a`)
 
-finally you can delete the google cloud resources with the command:
+then you remove the container from your machine:
+
+`docker rm [container name]`
+
+finally you can delete the google cloud resources (gcs bucket and bq dataset) with the command:
 
 `terraform destroy`
 
